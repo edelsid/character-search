@@ -1,18 +1,17 @@
 .search__form {
-  width: 100%;
+  width: 39.2%;
+  margin-inline: auto;
 }
 
 .search {
-  display: block;
-  width: 32.6%;
+  width: 100%;
   font-size: 2.2rem;
+  font-weight: 700;
   line-height: 1.2;
   color: var(--accent-color);
   box-shadow: 0 0.318em 0.545em 0 var(--shadow-color);
-  margin-inline: auto;
-  border: 0;
-  font-weight: 700;
   padding: 0.864em 1.136em;
+  border: 0;
 }
 
 .search::placeholder {

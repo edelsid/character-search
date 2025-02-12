@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useFetch } from "./hooks/useFetch";
-import Searchbar from "./components/Searchbar/Searchbar"
-import Card from "./components/Card/Card";
+import Container from "./components/models/Container";
+import Searchbar from "./components/searchbar/Searchbar"
+import Card from "./components/cards/Card";
 
 function App() {
   const [ url, setUrl ] = useState(null);
@@ -10,10 +11,14 @@ function App() {
   return (
     <> 
       <header className="header">
-        <Searchbar setUrl={setUrl}/>
+        <Container>
+          <Searchbar setUrl={setUrl}/>
+        </Container>
       </header>
       <main className="main">
-        {data ? data.map((item) => <Card/>) : <></>}
+        <Container>
+          {url && data ? data.map((item) => <Card/>) : <></>}
+        </Container>
       </main>
     </>
   )

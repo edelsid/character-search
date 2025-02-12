@@ -29,3 +29,9 @@ body {
 header {
   margin-bottom: 10rem;
 }
+
+.container {
+  width: 84%;
+  max-width: 1596px;
+  margin-inline: auto;
+}

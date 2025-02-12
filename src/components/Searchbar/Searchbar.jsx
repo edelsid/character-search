@@ -11,9 +11,10 @@ export default function Searchbar({ setUrl }) {
 
   useEffect(() => {
     if (request && request.length > 3) {
-      console.log("sending request", request);
       setUrl(`${rawURL}${request}`);
+      return;
     }
+    setUrl(null);
   }, [request])
 
   return (
