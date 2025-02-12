@@ -1,8 +1,15 @@
+import Searchbar from "./components/Searchbar/Searchbar"
+
 function App() {
 
   return (
-    <>
-      Hello
+    <> 
+      <header className="header">
+        <Searchbar />
+      </header>
+      <main className="main">
+        
+      </main>
     </>
   )
 }
