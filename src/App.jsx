@@ -46,7 +46,7 @@ function App() {
             clearAll={clearAll}
             setUrl={setUrl}
             url={url}
-            counter={cards.info.count ?? null}
+            counter={cards.info.count}
           />
         </Container>
       </header>

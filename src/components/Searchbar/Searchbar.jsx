@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import FoundCounter from "./FoundCounter";
 import "./searchbar.css"
 
 export default function Searchbar({ url, setUrl, counter, clearAll }) {
   const [ request, setRequest ] = useState(null);
   const rawURL = import.meta.env.VITE_API_URL;
+  const inputField = useRef();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  }
+  useEffect(() => {
+    inputField.current.focus();
+  }, [])
 
   useEffect(() => {
     if (request && request.length > 3) {
@@ -20,11 +21,17 @@ export default function Searchbar({ url, setUrl, counter, clearAll }) {
     }
   }, [request])
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <form className="search__form" onSubmit={handleSubmit}>
       <input 
         className="search" 
         id="request" 
+        type="text"
+        ref={inputField}
         placeholder="Search characters..."
         onChange={(e) => setRequest(e.target.value)}
       />
