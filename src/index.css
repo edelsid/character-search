@@ -19,14 +19,18 @@ html {
 body {
   margin: 0;
   padding-block: 10.7vh;
-  min-width: 100vw;
   background-color: #fff;
   font-family: "Fira Sans", serif;
   font-weight: 400;
   font-style: normal;
 }
 
-header {
+a {
+  text-decoration: none;
+  color: #111;
+}
+
+.header {
   margin-bottom: 10rem;
 }
 
