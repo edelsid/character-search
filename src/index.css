@@ -12,7 +12,9 @@
   --text-color: #282626;
   --shadow-color: #64646F33;
   --accent-color: #656EC2;
-  --main-font: "Fira Sans", serif;
+  --large-font: "Fira Sans", serif;
+  --small-font: "Montserrat";
+  --header-font-size: 2.5rem;
 }
 
 html {
@@ -21,12 +23,21 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
   padding-block: 10.7vh;
   background-color: var(--bg-color);
-  font-family: var(--main-font);
   font-weight: 400;
   font-style: normal;
   color: var(--text-color);
+}
+
+h2 {
+  line-height: 1;
+  font-family: var(--large-font);
+  font-size: 1em;
+  font-weight: 400;
+  margin: 0;
+  text-transform: capitalize;
 }
 
 a {
@@ -35,7 +46,7 @@ a {
 }
 
 input {
-  font-family: var(--main-font);
+  font-family: var(--large-font);
 }
 
 main .container {
@@ -57,9 +68,46 @@ main .container {
 
 .btn {
   background-color: var(--bg-color);
+  font-family: var(--large-font);
   box-shadow: 0 0.28em 1em 0 var(--shadow-color);
-  font-size: 2.5rem;
+  font-size: var(--header-font-size);
   border: 0;
   padding: 0.5em 1em;
   cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --header-font-size: 2rem;
+  }
+
+  body {
+    padding-block: 9vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-font-size: 1.8rem;
+  }
+
+  body {
+    padding-block: 5vh;
+  }
+
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 320px) {
+  :root {
+    --header-font-size: 9vw;
+  }
 }

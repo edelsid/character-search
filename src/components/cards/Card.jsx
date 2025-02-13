@@ -6,7 +6,11 @@ export default function Card({ data }) {
   return (
     <a className="card__link" href={url} target="_blank">
       <article className="card">
-        <header className="card__header">{`${name} - ${species}`}</header>
+        <header className="card__header">
+          <h2>
+            {`${name} - ${species}`}
+          </h2>
+        </header>
         <CardFooter status={status} created={created}/>
       </article>
     </a>
