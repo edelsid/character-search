@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useFetch } from "./hooks/useFetch";
 import Container from "./components/models/Container";
 import Searchbar from "./components/searchbar/Searchbar"
-import Card from "./components/cards/Card";
+import CardGrid from "./components/Cards/CardGrid";
 
 function App() {
   const [ url, setUrl ] = useState(null);
@@ -17,7 +17,7 @@ function App() {
       </header>
       <main className="main">
         <Container>
-          {url && data ? data.map((item) => <Card/>) : <></>}
+          {data && url ? <CardGrid data={data}/> : <></>}
         </Container>
       </main>
     </>

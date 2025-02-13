@@ -1,5 +1,7 @@
-export default function Card() {
+export default function Card({ data }) {
   return (
-    <div>Card</div>
+    <article className="card">
+
+    </article>
   )
 }

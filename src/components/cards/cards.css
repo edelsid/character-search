@@ -1,0 +1,13 @@
+.cards__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cards_heading {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-template-columns: repeat(2, 1fr);
+}
