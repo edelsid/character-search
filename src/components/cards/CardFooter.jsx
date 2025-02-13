@@ -1,4 +1,5 @@
 export default function CardFooter({ status, created }) {
+  created = new Date(created).toLocaleDateString()
 
   return (
     <footer className="card__footer">
