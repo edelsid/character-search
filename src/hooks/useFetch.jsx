@@ -17,7 +17,7 @@ export function useFetch(url) {
           return response.json();
         })
         .then((response) => {
-          setData(response.results);
+          setData(response);
           setLoading(false);
         })
         .catch((err) => {

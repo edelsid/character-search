@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import FoundCounter from "./FoundCounter";
 import "./searchbar.css"
 
-export default function Searchbar({ setUrl, counter }) {
+export default function Searchbar({ url, setUrl, counter, clearAll }) {
   const [ request, setRequest ] = useState(null);
   const rawURL = import.meta.env.VITE_API_URL;
 
@@ -15,7 +15,9 @@ export default function Searchbar({ setUrl, counter }) {
       setUrl(`${rawURL}${request}`);
       return;
     }
-    setUrl(null);
+    if (request && request.length <= 3 && url) {
+      clearAll();
+    }
   }, [request])
 
   return (

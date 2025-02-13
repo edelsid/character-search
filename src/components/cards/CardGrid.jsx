@@ -1,9 +1,9 @@
 import Card from "./Card"
 import "./cards.css"
 
-export default function CardGrid({ data }) {
-  const headingCards = data.slice(0, 2);
-  const normalCards = data.slice(2);
+export default function CardGrid({ cards }) {
+  const headingCards = cards.slice(0, 2);
+  const normalCards = cards.slice(2);
 
   return (
     <div className="cards__grid">

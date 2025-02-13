@@ -1,5 +1,11 @@
-const data =  
-  [
+const data =  {
+  "info": {
+      "count": 107,
+      "pages": 6,
+      "next": "https://rickandmortyapi.com/api/character/?page=2&name=Rick",
+      "prev": null
+  },
+  "results": [
       {
           "id": 1,
           "name": "Rick Sanchez",
@@ -501,5 +507,6 @@ const data =
           "created": "2017-12-30T14:27:55.489Z"
       }
   ]
+}
 
   export default data
