@@ -1,0 +1,50 @@
+.error {
+  width: 50%;
+  text-align: center;
+}
+
+.error__img {
+  width: 5rem;
+}
+
+.error__msg {
+  font-family: var(--small-font);
+  font-size: var(--text-font-size);
+}
+
+.loading {
+  display: flex;
+  gap: 1rem;
+}
+
+.loading__el {
+  width: 1.5rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .error__img {
+    width: 3.6rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .error__img {
+    width: 2.6rem;
+  }
+}

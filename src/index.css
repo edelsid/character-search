@@ -15,6 +15,7 @@
   --large-font: "Fira Sans", serif;
   --small-font: "Montserrat";
   --header-font-size: 2.5rem;
+  --text-font-size: 1.4rem;
 }
 
 html {
@@ -29,6 +30,12 @@ body {
   font-weight: 400;
   font-style: normal;
   color: var(--text-color);
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 h2 {
@@ -87,6 +94,10 @@ main .container {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --text-font-size: 1.2rem;
+  }
+
   .header {
     margin-bottom: 3rem;
   }
@@ -109,5 +120,6 @@ main .container {
 @media (max-width: 320px) {
   :root {
     --header-font-size: 9vw;
+    --text-font-size: 6vw;
   }
 }

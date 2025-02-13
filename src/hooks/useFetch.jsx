@@ -2,27 +2,33 @@ import { useState, useEffect } from "react";
 
 export function useFetch(url) {
   const [ data, setData ] = useState(null);
-  const [ error, setError ] = useState(false);
+  const [ error, setError ] = useState(null);
   const [ loading, setLoading ] = useState(false);
 
   const fetchData = (url) => {
-    setLoading(true);
     if (!url) return;
     else {
+      setLoading(true);
       fetch(url)
         .then((response) => {
+          if (response.status === 404) {
+            throw Error("No characters found");
+          }
           if (!response.ok) {
-            throw Error("Oops! Looks like something went wrong");
+            throw Error("Oops! Look like something went wrong");
           }
           return response.json();
         })
         .then((response) => {
-          setData(response);
-          setLoading(false);
+          const delay = Math.trunc((Math.random() * 2000));
+          setTimeout(() => {
+            setData(response);
+            setLoading(false);
+            setError(null);
+          }, delay);
         })
         .catch((err) => {
-          console.log(err);
-          setError(true);
+          setError(err);
           setLoading(false);
         })
     }
