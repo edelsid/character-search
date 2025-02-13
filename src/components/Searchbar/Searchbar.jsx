@@ -25,6 +25,10 @@ export default function Searchbar({ url, setUrl, counter, clearAll }) {
     e.preventDefault();
   }
 
+  const vaidateInput = () => {
+    
+  }
+
   return (
     <form className="search__form" onSubmit={handleSubmit}>
       <input 
@@ -35,7 +39,7 @@ export default function Searchbar({ url, setUrl, counter, clearAll }) {
         placeholder="Search characters..."
         onChange={(e) => setRequest(e.target.value)}
       />
-      {counter ? <FoundCounter counter={counter}/> : <></>}
+      {counter && <FoundCounter counter={counter}/>}
     </form>
   )
 }

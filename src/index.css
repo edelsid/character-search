@@ -81,6 +81,15 @@ main .container {
   border: 0;
   padding: 0.5em 1em;
   cursor: pointer;
+  transition: all 0.5s ease;
+  transition-property: color, transform;
+}
+
+@media (hover:hover) {
+  .btn:hover {
+    color: var(--accent-color);
+    transform: translateY(-0.2em);
+  }
 }
 
 @media (max-width: 1200px) {
