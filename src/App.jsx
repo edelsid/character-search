@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { useFetch } from "./hooks/useFetch";
 import Container from "./components/models/Container";
 import Searchbar from "./components/searchbar/Searchbar"
 import CardGrid from "./components/Cards/CardGrid";
@@ -15,7 +14,7 @@ function App() {
     <> 
       <header className="header">
         <Container>
-          <Searchbar setUrl={setUrl}/>
+          <Searchbar setUrl={setUrl} counter={data ? data.length : null}/>
         </Container>
       </header>
       <main className="main">

@@ -1,3 +1,5 @@
+import CardFooter from "./CardFooter";
+
 export default function Card({ data }) {
   const { name, species, status, created, url } = data;
 
@@ -5,15 +7,7 @@ export default function Card({ data }) {
     <a className="card__link" href={url} target="_blank">
       <article className="card">
         <header className="card__header">{`${name} - ${species}`}</header>
-        <footer className="card__footer">
-          <div className="status">
-            <span className="status_label">Status: </span>
-            <span className={`status_data ${status.toLowerCase()}`}>
-              {status}
-            </span>
-          </div>
-          <span className="date">{`Created: ${created}`}</span>
-        </footer>
+        <CardFooter status={status} created={created}/>
       </article>
     </a>
   )

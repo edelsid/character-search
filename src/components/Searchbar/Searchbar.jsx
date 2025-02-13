@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
+import FoundCounter from "./FoundCounter";
 import "./searchbar.css"
 
-export default function Searchbar({ setUrl }) {
+export default function Searchbar({ setUrl, counter }) {
   const [ request, setRequest ] = useState(null);
   const rawURL = import.meta.env.VITE_API_URL;
 
@@ -25,6 +26,7 @@ export default function Searchbar({ setUrl }) {
         placeholder="Search characters..."
         onChange={(e) => setRequest(e.target.value)}
       />
+      {counter ? <FoundCounter counter={counter}/> : <></>}
     </form>
   )
 }

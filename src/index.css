@@ -8,8 +8,11 @@
 }
 
 :root {
+  --bg-color: #fff;
+  --text-color: #282626;
   --shadow-color: #64646F33;
   --accent-color: #656EC2;
+  --main-font: "Fira Sans", serif;
 }
 
 html {
@@ -19,19 +22,24 @@ html {
 body {
   margin: 0;
   padding-block: 10.7vh;
-  background-color: #fff;
-  font-family: "Fira Sans", serif;
+  background-color: var(--bg-color);
+  font-family: var(--main-font);
   font-weight: 400;
   font-style: normal;
+  color: var(--text-color);
 }
 
 a {
   text-decoration: none;
-  color: #111;
+  color: var(--text-color);
+}
+
+input {
+  font-family: var(--main-font);
 }
 
 .header {
-  margin-bottom: 10rem;
+  margin-bottom: 7rem;
 }
 
 .container {
