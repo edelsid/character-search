@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import FoundCounter from "./FoundCounter";
 import "./searchbar.css"
 
-export default function Searchbar({ url, setUrl, counter, clearAll, setAppErr }) {
+export default function Searchbar({ setUrl, counter, clearAll, setAppErr }) {
   const [ request, setRequest ] = useState(null);
   const rawURL = import.meta.env.VITE_API_URL;
   const inputField = useRef();
@@ -12,6 +12,19 @@ export default function Searchbar({ url, setUrl, counter, clearAll, setAppErr })
   }, [])
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      handleChange();
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    }
+  }, [request])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
+  const handleChange = () => {
     if (request && request.length > 3) {
       const validatedReq = vaidateInput(request);
       if (validatedReq) {
@@ -20,22 +33,18 @@ export default function Searchbar({ url, setUrl, counter, clearAll, setAppErr })
       }
       return;
     }
-    if (request && request.length <= 3) {
+    if (!request || request.length <= 3) {
       clearAll();
     }
-  }, [request])
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
   }
 
   const vaidateInput = (request) => {
     if (request === "") return;
-    const checkedReq = request.trim();
+    const validatedReq = request.trim();
     const regex = /^[a-zA-Z\s]+$/;
     try {
-      if (regex.test(checkedReq)) {
-        return checkedReq;
+      if (regex.test(validatedReq)) {
+        return validatedReq;
       } else {
         throw Error("Please use latin alphabet for a character name");
       }
