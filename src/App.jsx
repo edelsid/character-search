@@ -6,11 +6,12 @@ import CardGrid from "./components/cards/CardGrid";
 import PageTurner from "./components/cards/PageTurner";
 import Error from "./components/ui/Error";
 import Loading from "./components/ui/Loading";
+import Scrollup from "./components/ui/Scrollup";
 import "./components/ui/ui.css"
-//import data from "./assets/propData";
 
 function App() {
   const [ url, setUrl ] = useState(null);
+  const [ scrolled, setScrolled ] = useState(false);
   const [ appErr, setAppErr ] = useState(null);
   const [ cards, setCards ] = useState({
     results: [],
@@ -18,6 +19,17 @@ function App() {
   });
 
   let { data, error, loading } = useFetch(url);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 150) {
+        setScrolled(true);
+        return;
+      }
+      setScrolled(false);
+    }
+    document.addEventListener("scroll", handleScroll);
+  }, [])
 
   useEffect(() => {
     if (data) {
@@ -76,6 +88,7 @@ function App() {
             </>}
         </Container>
       </main>
+      {scrolled && <Scrollup />}
     </>
   )
 }

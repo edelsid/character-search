@@ -25,6 +25,22 @@
   animation: blink 1s infinite;
 }
 
+.scroll-up {
+  position: fixed;
+  bottom: 7rem;
+  right: 7rem;
+  width: 5rem;
+  aspect-ratio: 1 / 1;
+  background-color: var(--bg-color);
+  border: 2px solid var(--text-color);
+  box-shadow: 0 1em 1em 0 var(--shadow-color);
+  border-radius: 50%;
+}
+
+.scroll-up__arrow {
+  width: 50%;
+}
+
 @keyframes blink {
   from {
     opacity: 0;
@@ -43,8 +59,20 @@
   }
 }
 
+@media (max-width: 480px) {
+  .scroll-up {
+    bottom: 5rem;
+    right: 5rem;
+    width: 4rem;
+  }
+}
+
 @media (max-width: 320px) {
   .error__img {
     width: 2.6rem;
+  }
+
+  .scroll-up {
+    display: none;
   }
 }

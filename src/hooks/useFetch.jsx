@@ -14,7 +14,7 @@ export function useFetch(url) {
           if (response.status === 404) {
             throw Error("No characters found");
           } else if (!response.ok) {
-            throw Error("Oops! Look like something went wrong");
+            throw Error("Oops! Looks like something went wrong...");
           }
           return response.json();
         })
@@ -27,7 +27,8 @@ export function useFetch(url) {
           }, delay);
         })
         .catch((err) => {
-          setError(err);
+          const customErr = new Error("Oops! Looks like something went wrong...");
+          setError(customErr);
           setLoading(false);
         })
     }
