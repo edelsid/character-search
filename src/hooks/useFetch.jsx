@@ -5,6 +5,8 @@ export function useFetch(url) {
   const [ error, setError ] = useState(null);
   const [ loading, setLoading ] = useState(false);
 
+  // Хук особо реагирует на 1 тип ошибки: на сервере нет персонажа (404 not found).
+  // Внутрь встроена небольшая (и случайная по длине) имитация задержки сервера
   const fetchData = (url) => {
     if (!url) return;
     else {

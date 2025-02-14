@@ -1,4 +1,3 @@
-import React, { useCallback } from "react";
 import { useState, useEffect } from "react"
 import { useFetch } from "./hooks/useFetch";
 import Container from "./components/models/Container";
@@ -21,6 +20,7 @@ function App() {
 
   let { data, error, loading } = useFetch(url);
 
+  // При прокрутке страницы появляется кнопка отмотки к началу
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 150) {
@@ -32,12 +32,14 @@ function App() {
     document.addEventListener("scroll", handleScroll);
   }, [])
 
+  // Установка данных при их получении или изменении при смене страницы
   useEffect(() => {
     if (data) {
       setCards(data);
     };
   }, [data])
 
+  // Установка данных об ошибке. При этом все карточки сбрасываются
   useEffect(() => {
     if (error) {
       clearAll();
@@ -45,22 +47,24 @@ function App() {
     }
   }, [error])
 
-  const turnPage = useCallback((e) => {
+  // Ф-ция переворота страницы. Направление приходит от кнопки
+  const turnPage = (e) => {
     if (e.target.id === "prev") {
       setUrl(cards.info.prev);
       return;
     }
     setUrl(cards.info.next);
-  })
+  }
 
-  const clearAll = useCallback(() => {
+  // Ф-ция сброса всего. Применяется при пустом поле (< 3 символов) или при ошибке
+  const clearAll = () => {
     setUrl(null);
     setAppErr(null);
     setCards({
       results: [],
       info: {},
     });
-  })
+  }
 
   return (
     <> 

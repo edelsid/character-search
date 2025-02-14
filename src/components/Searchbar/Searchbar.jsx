@@ -10,10 +10,12 @@ export default function Searchbar({ setUrl, counter, clearAll, setAppErr }) {
   const rawURL = import.meta.env.VITE_API_URL;
   const inputField = useRef();
 
+  // Установка фокуса на инпут-поле при входе
   useEffect(() => {
     inputField.current.focus();
   }, [])
 
+  // Дебаунс для обработки запроса
   useEffect(() => {
     const timer = setTimeout(() => {
       handleChange();
@@ -23,10 +25,12 @@ export default function Searchbar({ setUrl, counter, clearAll, setAppErr }) {
     }
   }, [request])
 
+  // При нажатии на Enter ничего не происходит, реакция идет при печатании
   const handleSubmit = (e) => {
     e.preventDefault();
   }
 
+  // Ф-ция обработки запроса и формации url для обращения на сервер
   const handleChange = () => {
     if (request && request.length > 3) {
       const validatedReq = vaidateInput(request);
@@ -41,6 +45,8 @@ export default function Searchbar({ setUrl, counter, clearAll, setAppErr }) {
     }
   }
 
+  // Ф-ция валидации запроса: пустая строка не обрабатывается.
+  // Пробелы отсекаются, принимается лишь англ. язык
   const vaidateInput = (request) => {
     if (request === "") return;
     const validatedReq = request.trim();
