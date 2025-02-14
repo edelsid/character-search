@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import FoundCounter from "./FoundCounter";
 import "./searchbar.css"
 
-export default function Searchbar({ url, setUrl, counter, clearAll }) {
+export default function Searchbar({ url, setUrl, counter, clearAll, setAppErr }) {
   const [ request, setRequest ] = useState(null);
   const rawURL = import.meta.env.VITE_API_URL;
   const inputField = useRef();
@@ -13,10 +13,14 @@ export default function Searchbar({ url, setUrl, counter, clearAll }) {
 
   useEffect(() => {
     if (request && request.length > 3) {
-      setUrl(`${rawURL}${request}`);
+      const validatedReq = vaidateInput(request);
+      if (validatedReq) {
+        setUrl(`${rawURL}${validatedReq}`);
+        setAppErr(null);
+      }
       return;
     }
-    if (request && request.length <= 3 && url) {
+    if (request && request.length <= 3) {
       clearAll();
     }
   }, [request])
@@ -25,8 +29,19 @@ export default function Searchbar({ url, setUrl, counter, clearAll }) {
     e.preventDefault();
   }
 
-  const vaidateInput = () => {
-    
+  const vaidateInput = (request) => {
+    if (request === "") return;
+    const checkedReq = request.trim();
+    const regex = /^[a-zA-Z\s]+$/;
+    try {
+      if (regex.test(checkedReq)) {
+        return checkedReq;
+      } else {
+        throw Error("Please use latin alphabet for a character name");
+      }
+    } catch (error) {
+      setAppErr(error);
+    }
   }
 
   return (

@@ -11,11 +11,12 @@ import "./components/ui/ui.css"
 
 function App() {
   const [ url, setUrl ] = useState(null);
+  const [ appErr, setAppErr ] = useState(null);
   const [ cards, setCards ] = useState({
     results: [],
     info: {},
   });
-  
+
   let { data, error, loading } = useFetch(url);
 
   useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
   useEffect(() => {
     if (error) {
       clearAll();
+      setAppErr(error);
     }
   }, [error])
 
@@ -40,6 +42,7 @@ function App() {
 
   const clearAll = () => {
     setUrl(null);
+    setAppErr(null);
     setCards({
       results: [],
       info: {},
@@ -53,16 +56,16 @@ function App() {
           <Searchbar 
             clearAll={clearAll}
             setUrl={setUrl}
-            url={url}
             counter={cards.info.count}
+            setAppErr={setAppErr}
           />
         </Container>
       </header>
       <main className="main">
         <Container>
           {loading && <Loading />}
-          {error && !loading && <Error msg={error.message}/>}
-          {!error && !loading && 
+          {appErr && !loading && <Error msg={appErr.message}/>}
+          {!appErr && !loading && 
             <>
               <CardGrid cards={cards.results}/>
               <PageTurner 

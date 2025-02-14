@@ -13,8 +13,7 @@ export function useFetch(url) {
         .then((response) => {
           if (response.status === 404) {
             throw Error("No characters found");
-          }
-          if (!response.ok) {
+          } else if (!response.ok) {
             throw Error("Oops! Look like something went wrong");
           }
           return response.json();
