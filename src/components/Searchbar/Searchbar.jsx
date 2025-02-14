@@ -47,6 +47,7 @@ export default function Searchbar({ setUrl, counter, clearAll, setAppErr }) {
 
   // Ф-ция валидации запроса: пустая строка не обрабатывается.
   // Пробелы отсекаются, принимается лишь англ. язык
+  // При поиске не на англ. языке происходит ошибка
   const vaidateInput = (request) => {
     if (request === "") return;
     const validatedReq = request.trim();
