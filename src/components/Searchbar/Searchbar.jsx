@@ -50,9 +50,9 @@ export default function Searchbar({ setUrl, counter, clearAll, setAppErr }) {
   // Пробелы отсекаются, принимается лишь англ. язык
   // При поиске не на англ. языке происходит ошибка
   const vaidateInput = (request) => {
-    if (request === "") return;
     const validatedReq = request.trim();
-    const regex = /^[a-zA-Z\s]+$/;
+    if (!validatedReq || validatedReq.length <= 3) return;
+    const regex = /^[a-zA-Z0-9\s]+$/;
     try {
       if (regex.test(validatedReq)) {
         return validatedReq;
