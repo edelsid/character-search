@@ -1,3 +1,4 @@
+import { string } from "prop-types"
 import errImg from "../../assets/error.svg"
 
 export default function Error({ msg }) {
@@ -7,4 +8,8 @@ export default function Error({ msg }) {
       <p className="error__msg">{msg}</p>
     </div>
   )
+}
+
+Error.propTypes = {
+  msg: string,
 }

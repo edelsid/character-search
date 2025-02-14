@@ -1,3 +1,4 @@
+import { array } from "prop-types"
 import Card from "./Card"
 import "./cards.css"
 
@@ -11,4 +12,8 @@ export default function CardGrid({ cards }) {
       {cards.slice(2).map((item) => <Card key={item.id} data={item}/>)}
     </div>
   )
+}
+
+CardGrid.propTypes = {
+  cards: array,
 }

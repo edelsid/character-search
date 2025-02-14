@@ -1,3 +1,4 @@
+import { object } from "prop-types";
 import CardFooter from "./CardFooter";
 
 export default function Card({ data }) {
@@ -15,4 +16,8 @@ export default function Card({ data }) {
       </article>
     </a>
   )
+}
+
+Card.propTypes = {
+  data: object,
 }

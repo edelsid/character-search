@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect, useRef } from "react"
 import FoundCounter from "./FoundCounter";
 import "./searchbar.css"
+import { func, number } from "prop-types";
 
 const PureCounter = React.memo(FoundCounter);
 
@@ -76,4 +77,11 @@ export default function Searchbar({ setUrl, counter, clearAll, setAppErr }) {
       {counter && <PureCounter counter={counter}/>}
     </form>
   )
+}
+
+Searchbar.propTypes = {
+  setUrl: func,
+  counter: number,
+  clearAll: func,
+  setAppErr: func,
 }

@@ -1,3 +1,5 @@
+import { string } from "prop-types";
+
 export default function CardFooter({ status, created }) {
   created = new Date(created).toLocaleDateString();
 
@@ -12,4 +14,9 @@ export default function CardFooter({ status, created }) {
       <span className="date">{`Created: ${created}`}</span>
     </footer>
   )
+}
+
+CardFooter.propTypes = {
+  status: string,
+  created: string,
 }

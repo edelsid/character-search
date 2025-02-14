@@ -1,3 +1,4 @@
+import { func, string } from "prop-types"
 import Button from "../models/Button"
 
 export default function PageTurner({ turnPage, next, prev }) {
@@ -7,4 +8,10 @@ export default function PageTurner({ turnPage, next, prev }) {
       {next && <Button name="Next" func={turnPage} id="next"/>}
     </div>
   )
+}
+
+PageTurner.propTypes = {
+  turnPage: func,
+  next: string,
+  prev: string,
 }
