@@ -1,6 +1,9 @@
+import React from "react";
 import { useState, useEffect, useRef } from "react"
 import FoundCounter from "./FoundCounter";
 import "./searchbar.css"
+
+const PureCounter = React.memo(FoundCounter);
 
 export default function Searchbar({ setUrl, counter, clearAll, setAppErr }) {
   const [ request, setRequest ] = useState(null);
@@ -54,16 +57,16 @@ export default function Searchbar({ setUrl, counter, clearAll, setAppErr }) {
   }
 
   return (
-    <form className="search__form" onSubmit={handleSubmit}>
+    <form className="search" onSubmit={handleSubmit}>
       <input 
-        className="search" 
+        className="search__input" 
         id="request" 
         type="text"
         ref={inputField}
         placeholder="Search characters..."
         onChange={(e) => setRequest(e.target.value)}
       />
-      {counter && <FoundCounter counter={counter}/>}
+      {counter && <PureCounter counter={counter}/>}
     </form>
   )
 }

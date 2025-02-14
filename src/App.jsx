@@ -1,3 +1,4 @@
+import React, { useCallback } from "react";
 import { useState, useEffect } from "react"
 import { useFetch } from "./hooks/useFetch";
 import Container from "./components/models/Container";
@@ -44,22 +45,22 @@ function App() {
     }
   }, [error])
 
-  const turnPage = (e) => {
+  const turnPage = useCallback((e) => {
     if (e.target.id === "prev") {
       setUrl(cards.info.prev);
       return;
     }
     setUrl(cards.info.next);
-  }
+  })
 
-  const clearAll = () => {
+  const clearAll = useCallback(() => {
     setUrl(null);
     setAppErr(null);
     setCards({
       results: [],
       info: {},
     });
-  }
+  })
 
   return (
     <> 

@@ -32,7 +32,7 @@
   width: 5rem;
   aspect-ratio: 1 / 1;
   background-color: var(--bg-color);
-  border: 2px solid var(--text-color);
+  border: 2px solid var(--shadow-color);
   box-shadow: 0 1em 1em 0 var(--shadow-color);
   border-radius: 50%;
 }

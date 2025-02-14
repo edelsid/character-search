@@ -27,8 +27,7 @@ export function useFetch(url) {
           }, delay);
         })
         .catch((err) => {
-          const customErr = new Error("Oops! Looks like something went wrong...");
-          setError(customErr);
+          setError(err);
           setLoading(false);
         })
     }

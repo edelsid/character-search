@@ -4,8 +4,8 @@ export default function CardFooter({ status, created }) {
   return (
     <footer className="card__footer">
       <div className="status">
-        <span className="status_label">Status: </span>
-        <span className={`status_data ${status.toLowerCase()}`}>
+        <span className="status__label">Status: </span>
+        <span className={`status__data ${status.toLowerCase()}`}>
           {status}
         </span>
       </div>

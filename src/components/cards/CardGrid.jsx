@@ -9,12 +9,10 @@ export default function CardGrid({ cards }) {
     <div className="cards__grid">
       <div className="cards_heading">
         {headingCards ? headingCards.map((item) => 
-          <Card key={item.id} data={item}/>) :
-          <></>}
+          <Card key={item.id} data={item}/>) : <></>}
       </div>
       {normalCards ? normalCards.map((item) => 
-        <Card key={item.id} data={item}/>) :
-        <></>}
+        <Card key={item.id} data={item}/>) : <></>}
     </div>
   )
 }
